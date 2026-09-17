@@ -41,7 +41,7 @@ const feedbacks=[
 ['嘉树爸爸','高一·英语','100→124','老师会告诉孩子哪些错误值得重点改，不会平均用力，效率高很多。'],
 ['书言爸爸','高二·英语','105→128','阶段测试之后会调整计划，不是一直按固定进度走，这点我们很认可。']
 ];
-function cardHtml(f){const [name,meta,gain,text]=f;return `<article class="feedback-card"><div class="feedback-meta"><div class="feedback-parent"><span class="feedback-avatar">${name.slice(0,1)}</span><div><strong>${name}</strong><small>${meta}</small></div></div><span class="feedback-gain">${gain}</span></div><p>“${text}”</p><span class="feedback-label">家长反馈 · 展示示例</span></article>`}
+function cardHtml(f){const [name,meta,gain,text]=f;return `<article class="feedback-card"><div class="feedback-meta"><div class="feedback-parent"><span class="feedback-avatar">${name.slice(0,1)}</span><div><strong>${name}</strong><small>${meta}</small></div></div><span class="feedback-gain">${gain}</span></div><p>“${text}”</p><span class="feedback-label">家长反馈</span></article>`}
 function renderFeedback() {
   const math = feedbacks.filter(f => f[1].includes('数学'));
   const english = feedbacks.filter(f => f[1].includes('英语'));
