@@ -42,7 +42,23 @@ const feedbacks=[
 ['书言爸爸','高二·英语','105→128','阶段测试之后会调整计划，不是一直按固定进度走，这点我们很认可。']
 ];
 function cardHtml(f){const [name,meta,gain,text]=f;return `<article class="feedback-card"><div class="feedback-meta"><div class="feedback-parent"><span class="feedback-avatar">${name.slice(0,1)}</span><div><strong>${name}</strong><small>${meta}</small></div></div><span class="feedback-gain">${gain}</span></div><p>“${text}”</p><span class="feedback-label">家长反馈 · 展示示例</span></article>`}
-function renderFeedback(){const a=feedbacks.slice(0,25),b=feedbacks.slice(25);const A=$('#feedbackTrackA'),B=$('#feedbackTrackB');if(A)A.innerHTML=[...a,...a].map(cardHtml).join('');if(B)B.innerHTML=[...b,...b].map(cardHtml).join('')}renderFeedback();
+function renderFeedback() {
+  const math = feedbacks.filter(f => f[1].includes('数学'));
+  const english = feedbacks.filter(f => f[1].includes('英语'));
+
+  const A = $('#feedbackTrackA');
+  const B = $('#feedbackTrackB');
+
+  if (A) {
+    A.innerHTML = [...math, ...math].map(cardHtml).join('');
+  }
+
+  if (B) {
+    B.innerHTML = [...english, ...english].map(cardHtml).join('');
+  }
+}
+
+renderFeedback();
 
 const dateScroller=$('#dateScroller'),slotsEl=$('#timeSlots'),dateLabel=$('#selectedDateLabel'),slotDateInput=$('#slotDate'),slotTimeInput=$('#slotTime'),slotCard=$('#selectedSlotCard');let selectedDate='',selectedTime='',remoteSlots=[];
 const pad=n=>String(n).padStart(2,'0'),fmtISO=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`,cnWeek=['周日','周一','周二','周三','周四','周五','周六'];const displayDate=iso=>{const [y,m,d]=iso.split('-').map(Number),dt=new Date(y,m-1,d);return `${m}月${d}日 ${cnWeek[dt.getDay()]}`};const recurring={0:['09:30','14:00','16:00','19:00'],1:['19:00','20:30'],2:['19:00','20:30'],3:['19:00','20:30'],4:['19:00','20:30'],5:['19:00','20:30'],6:['09:30','14:00','16:00','19:00']};const localKey='he_tutor_bookings_v1',localBookings=()=>JSON.parse(localStorage.getItem(localKey)||'[]'),isPresetBusy=(iso,time)=>(Number(iso.replaceAll('-',''))+Number(time.replace(':','')))%5===0,isLocalBooked=(iso,time)=>localBookings().some(x=>x.slot_date===iso&&x.slot_time===time),hasSupabase=()=>Boolean(config.USE_SUPABASE&&config.SUPABASE_URL&&config.SUPABASE_ANON_KEY);
