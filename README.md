@@ -11,6 +11,7 @@
 - 数学 / 英语科目 Tab
 - 教育心理 / 记忆训练 / 考前状态方法卡片展开
 - 三段真实提分案例
+- 学历经历时间轴加入广州二中、中山大学、北京大学校徽
 - 21 天滚动预约日期 + 时段状态
 - 家长表单：姓名、年级、科目、当前成绩、目标成绩、联系方式、学习问题
 - 微信二维码弹窗与移动端固定 CTA
@@ -66,7 +67,11 @@ he-tutor-site/
 ├── assets/
 │   ├── teacher-he.webp
 │   ├── wechat-qr.webp
-│   └── favicon.svg
+│   ├── favicon.svg
+│   └── school-logos/
+│       ├── guangzhou-no2.png
+│       ├── sun-yat-sen.svg
+│       └── peking-university.svg
 ├── supabase-schema.sql
 └── README.md
 ```
