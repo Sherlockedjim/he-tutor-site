@@ -2,7 +2,7 @@
 
 ## 本次修改
 
-- `index.html`：在“广州二中 / 中山大学 / 北京大学”三个教育经历节点加入校徽。
+- `index.html`：在“广州二中 / 中山大学”两个教育经历节点加入校徽。
 - `css/style.css`：新增校徽尺寸、圆形白底、阴影和右下角编号样式，并适配手机端。
 - `assets/school-logos/`：加入三个本地资源文件，网站运行时不依赖外部图片链接。
 - `.github/workflows/deploy-pages.yml`：修正原来的 `deplot-pages.yml` 文件名拼写，保证 GitHub Actions 能识别。
