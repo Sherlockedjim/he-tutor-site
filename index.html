@@ -8,6 +8,7 @@
   <title>何老师｜广州数学 · 英语私人辅导</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/booking.css" />
 </head>
 <body>
   <div class="cursor-glow" aria-hidden="true"></div>
@@ -79,9 +80,9 @@
         <div class="journey-grid">
           <div class="journey-card reveal">
             <div class="journey-line" aria-hidden="true"></div>
-            <article class="journey-step"><span class="journey-year journey-logo"><img src="assets/school-logos/guangzhou-no2.png" alt="广州市第二中学校徽" loading="lazy"><b>01</b></span><div><small>FOUNDATION</small><h3>广州二中</h3><p>初高中均就读广州二中。高考 650+，省排名 600 名以内；广一模全市前十。</p></div></article>
-            <article class="journey-step"><span class="journey-year journey-logo"><img src="assets/school-logos/sun-yat-sen.svg" alt="中山大学校徽" loading="lazy"><b>02</b></span><div><small>UNDERGRADUATE</small><h3>中山大学</h3><p>数学金融双学位。获国家奖学金、中山大学一等奖学金，并在数学竞赛与数学建模中获省级一等奖。</p></div></article>
-            <article class="journey-step"><span class="journey-year journey-logo"><img src="assets/school-logos/peking-university.svg" alt="北京大学校徽" loading="lazy"><b>03</b></span><div><small>MASTER</small><h3>北京大学</h3><p>继续深造。将理性思维、结构化分析和长期学习方法融入日常教学。</p></div></article>
+            <article class="journey-step"><span class="journey-year journey-logo"><img class="school-logo" src="./assets/school-logos/guangzhou-no2.png" alt="广州市第二中学校徽" loading="eager" decoding="async"><b>01</b></span><div><small>FOUNDATION</small><h3>广州二中</h3><p>初高中均就读广州二中。高考 650+，省排名 600 名以内；广一模全市前十。</p></div></article>
+            <article class="journey-step"><span class="journey-year journey-logo"><img class="school-logo" src="./assets/school-logos/sun-yat-sen.svg" alt="中山大学校徽" loading="eager" decoding="async"><b>02</b></span><div><small>UNDERGRADUATE</small><h3>中山大学</h3><p>数学金融双学位。获国家奖学金、中山大学一等奖学金，并在数学竞赛与数学建模中获省级一等奖。</p></div></article>
+            <article class="journey-step"><span class="journey-year journey-logo"><img class="school-logo" src="./assets/school-logos/peking-university.svg" alt="北京大学校徽" loading="eager" decoding="async"><b>03</b></span><div><small>MASTER</small><h3>北京大学</h3><p>继续深造。将理性思维、结构化分析和长期学习方法融入日常教学。</p></div></article>
           </div>
           <aside class="quote-card reveal" data-delay="120">
             <span class="quote-mark">“</span>
@@ -175,28 +176,54 @@
 
     <section class="section process-section"><div class="shell process-wrap reveal"><div class="process-copy"><span class="kicker">PROCESS</span><h2>一套清晰、<br>可追踪的辅导流程</h2><p>每个阶段都有明确目标，不把课堂变成单向讲题。</p></div><ol class="process-list"><li><span>01</span><div><b>学情诊断</b><p>了解年级、当前成绩、目标与近期薄弱点。</p></div></li><li><span>02</span><div><b>目标拆解</b><p>明确优先级，区分短期提分与长期能力建设。</p></div></li><li><span>03</span><div><b>个性化授课</b><p>围绕关键模块训练，并根据课堂反馈实时调整。</p></div></li><li><span>04</span><div><b>周期复盘</b><p>回看错因与进步证据，调整下一周期计划。</p></div></li></ol></div></section>
 
-    <section class="section booking" id="booking">
+    <section class="section booking booking-v2" id="booking">
       <div class="shell">
-        <div class="section-head reveal"><div><span class="kicker">BOOK A SESSION</span><h2>预约试听 / 学情诊断</h2></div><p>选择时间后填写学生基本情况。静态演示版会在本机记录预约；接入数据库后可实现多设备实时同步。</p></div>
-        <div class="booking-layout">
-          <div class="calendar-card reveal"><div class="calendar-head"><div><small>STEP 1</small><h3>选择日期与时间</h3></div><div class="legend"><span><i class="dot available"></i>可预约</span><span><i class="dot booked"></i>已约满</span></div></div><div class="date-scroller" id="dateScroller" aria-label="可预约日期"></div><div class="slot-title"><span id="selectedDateLabel">请选择日期</span><small>广州时间 GMT+8</small></div><div class="time-slots" id="timeSlots"><div class="empty-slots">选择上方日期查看可预约时段</div></div></div>
-          <form class="booking-form reveal" data-delay="100" id="bookingForm" novalidate>
-            <div class="form-head"><small>STEP 2</small><h3>学生基本信息</h3><p>仅用于课程沟通与预约，不会在网站公开展示。</p></div>
-            <input type="hidden" name="slot_date" id="slotDate" /><input type="hidden" name="slot_time" id="slotTime" />
-            <div class="selected-slot" id="selectedSlotCard"><span>尚未选择预约时间</span></div>
-            <div class="form-grid">
+        <div class="section-head reveal"><div><span class="kicker">BOOK A SESSION</span><h2>预约试听 / 学情诊断</h2></div><p>请在未来三周的日历中选择一个或多个上课日期，每天连续选择 2–3 个小时。审核通过后，该时间会自动显示为已预约。</p></div>
+        <div class="booking-v2-layout">
+          <div class="schedule-panel reveal">
+            <div class="schedule-head">
+              <div><small>STEP 1</small><h3>选择日期与时间</h3><p>每天至少选择 2 个、最多选择 3 个连续时间片。</p></div>
+              <div class="week-controls"><button type="button" class="week-btn" id="prevWeek" aria-label="上一周">‹</button><strong id="bookingWeekTitle">第 1 周</strong><button type="button" class="week-btn" id="nextWeek" aria-label="下一周">›</button></div>
+            </div>
+            <div class="schedule-legend"><span><i class="schedule-dot open"></i>可预约</span><span><i class="schedule-dot pending"></i>审核中</span><span><i class="schedule-dot occupied"></i>已预约 / 暂不开放</span><span><i class="schedule-dot selected"></i>已选择</span></div>
+            <div class="schedule-scroll"><div class="schedule-grid" id="bookingGrid" aria-label="三周预约日历"></div></div>
+            <div class="schedule-hint">点击浅色方块选择时间；已选择的方块会变成深蓝色。可以选择多个日期，但每个日期都必须是连续 2–3 小时。</div>
+            <div class="selection-summary" id="selectionSummary"><span>尚未选择时间</span></div>
+            <button type="button" class="reset-selection" id="resetSelection">重新选择时间</button>
+          </div>
+
+          <form class="booking-form-v2 reveal" data-delay="100" id="bookingFormV2" novalidate>
+            <div class="form-head-v2"><small>STEP 2</small><h3>学生基本信息</h3><p>信息仅用于本次课程沟通、预约与后台管理。</p></div>
+            <div class="selected-sessions" id="selectedSessions"><span>请先在左侧选择上课时间</span></div>
+            <div class="form-grid-v2">
               <label><span>学生姓名 *</span><input name="student_name" autocomplete="name" placeholder="例如：小林" required /></label>
+              <label><span>性别 *</span><select name="gender" required><option value="">请选择</option><option value="男">男</option><option value="女">女</option><option value="其他 / 不便透露">其他 / 不便透露</option></select></label>
               <label><span>年级 *</span><select name="grade" required><option value="">请选择</option><option>小学</option><option>初一</option><option>初二</option><option>初三</option><option>高一</option><option>高二</option><option>高三</option><option>其他</option></select></label>
-              <label><span>科目 *</span><select name="subject" required><option value="">请选择</option><option>数学</option><option>英语</option></select></label>其他</option></select></label>
+              <label><span>科目 *</span><select name="subject" required><option value="">请选择</option><option>数学</option><option>英语</option></select></label>
               <label><span>联系方式 *</span><input name="contact" placeholder="家长微信号 / 手机号" required /></label>
               <label><span>当前成绩 *</span><input name="current_score" placeholder="例如：数学 108 / 150" required /></label>
               <label><span>目标成绩 *</span><input name="target_score" placeholder="例如：稳定 130+" required /></label>
+              <label><span>预期价格 *</span><input name="expected_price" placeholder="例如：200 或 200–300 元/小时" required /></label>
             </div>
-            <label class="full-field"><span>主要学习问题（选填）</span><textarea name="notes" rows="4" placeholder="例如：导数压轴经常没有思路；计算失误较多；希望两个月内提升到……"></textarea></label>
-            <label class="privacy-check"><input type="checkbox" name="consent" required /><span>我同意将以上信息用于本次课程咨询、预约与后续沟通。</span></label>
-            <button class="btn btn-primary submit-btn magnetic" type="submit"><span class="submit-label">提交预约</span><span class="submit-spinner" aria-hidden="true"></span></button>
-            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            <div class="location-fields">
+              <label><span>上课方式 *</span><select name="location_mode" id="locationMode" required><option value="">请选择</option><option value="online">线上</option><option value="offline">线下</option></select></label>
+              <div class="offline-fields" id="offlineFields" hidden>
+                <label><span>广州区域 *</span><select name="district" id="district"><option value="">请选择区域</option><option>越秀区</option><option>海珠区</option><option>荔湾区</option><option>天河区</option><option>白云区</option><option>黄埔区</option><option>番禺区</option><option>花都区</option><option>南沙区</option><option>从化区</option><option>增城区</option></select></label>
+                <label><span>线下地点 *</span><select name="venue_type" id="venueType"><option value="">请选择</option><option value="家庭住址">家庭住址</option><option value="中山大学南校园周边星巴克">中山大学南校园周边星巴克</option><option value="其他地点">其他地点</option></select></label>
+                <label class="address-field"><span>详细街道地址 *</span><textarea name="address" id="addressField" rows="2" placeholder="请填写到街道、门牌号；仅后台可见"></textarea></label>
+              </div>
+            </div>
+            <label class="full-field-v2"><span>主要学习问题（选填）</span><textarea name="notes" rows="4" placeholder="例如：导数压轴经常没有思路；计算失误较多；希望两个月内提升到……"></textarea></label>
+            <p class="privacy-note">隐私说明：联系方式和详细地址只供何老师后台查看，不会在网页公开展示；查询码只能查询本次预约的日期、时间、科目、年级和审核状态。</p>
+            <label class="privacy-check-v2"><input type="checkbox" name="consent" required /><span>我同意将以上信息用于本次课程咨询、预约与后续沟通。</span></label>
+            <button class="btn btn-primary submit-btn-v2 magnetic" type="submit"><span class="submit-label">提交预约</span><span class="submit-spinner" aria-hidden="true"></span></button>
+            <p class="form-status-v2" id="formStatusV2" role="status" aria-live="polite"></p>
           </form>
+        </div>
+        <div class="lookup-card reveal" data-delay="140" id="bookingLookup">
+          <div><span class="kicker">CHECK YOUR REQUEST</span><h3>查询预约状态</h3><p>输入提交预约后获得的 8 位数字查询码，只会显示本次预约的基本状态。</p></div>
+          <form class="lookup-form" id="lookupForm" novalidate><label><span>8 位查询码</span><input id="lookupCode" inputmode="numeric" maxlength="8" pattern="[0-9]{8}" placeholder="例如：48271936" required /></label><button class="btn btn-ghost" type="submit">查询状态</button></form>
+          <div class="lookup-result" id="lookupResult" role="status" aria-live="polite"></div>
         </div>
       </div>
     </section>
@@ -208,6 +235,7 @@
   <div class="mobile-cta" aria-label="移动端快捷预约"><button type="button" data-open-qr>微信咨询</button><a href="#booking">预约学情诊断</a></div>
   <div class="modal" id="qrModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="微信二维码"><div class="modal-backdrop" data-close-qr></div><div class="modal-card"><button class="modal-close" type="button" data-close-qr aria-label="关闭">×</button><span class="kicker">WECHAT</span><h3>扫码添加何老师</h3><img src="assets/wechat-qr.webp" alt="何老师微信二维码大图" /><p>添加时可备注：学生年级 + 科目。</p></div></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="js/config.js"></script><script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script><script src="js/main.js"></script><script src="js/booking-v2.js"></script>
 </body>
 </html>

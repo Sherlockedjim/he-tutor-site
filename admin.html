@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4f9ff" />
+  <title>何老师｜预约后台</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <main class="admin-shell">
+    <section class="admin-login-card" id="adminLoginCard">
+      <a class="admin-brand" href="index.html"><span>H</span><strong>何老师预约后台</strong></a>
+      <p class="admin-kicker">PRIVATE ADMIN · BOOKING MANAGEMENT</p>
+      <h1>登录预约后台</h1>
+      <p class="admin-muted">仅管理员可以查看家长资料、审核预约和管理开放时间。</p>
+      <form id="adminLoginForm" class="admin-login-form" novalidate>
+        <label><span>管理员邮箱</span><input id="adminEmail" type="email" autocomplete="username" required placeholder="请输入管理员邮箱" /></label>
+        <label><span>密码</span><input id="adminPassword" type="password" autocomplete="current-password" required placeholder="请输入密码" /></label>
+        <button class="admin-primary" type="submit">登录后台</button>
+        <p class="admin-message" id="adminLoginMessage" role="status" aria-live="polite"></p>
+      </form>
+      <p class="admin-footnote">还没有完成 Supabase 配置？请先阅读项目根目录的 README.md。</p>
+    </section>
+
+    <section class="admin-app" id="adminApp" hidden>
+      <header class="admin-topbar">
+        <div><a class="admin-brand compact" href="index.html"><span>H</span><strong>何老师预约后台</strong></a><small id="adminIdentity"></small></div>
+        <div class="admin-top-actions"><a href="index.html#booking">打开预约页</a><button class="admin-link-btn" id="adminLogout" type="button">退出登录</button></div>
+      </header>
+
+      <div class="admin-content">
+        <section class="admin-page-head"><div><p class="admin-kicker">SCHEDULE & REVIEW</p><h1>预约管理</h1><p class="admin-muted">先开放你有空的小时，再在下方审核家长提交的预约。</p></div><div class="admin-status-pill" id="adminDataStatus">正在连接数据库…</div></section>
+
+        <section class="admin-card schedule-admin-card">
+          <div class="admin-card-head"><div><h2>未来 21 天开放时间</h2><p>默认全部关闭。点击浅色方块开放，点击已开放方块关闭；审核中和已确认的时间不能被手动覆盖。</p></div><div class="admin-toolbar"><button class="admin-secondary" id="initSchedule" type="button">初始化未来21天</button><button class="admin-secondary" id="openAll21" type="button">开放未来21天</button><button class="admin-secondary" id="openCurrentWeek" type="button">开放当前周</button></div></div>
+          <div class="admin-week-bar"><button class="round-btn" id="adminPrevWeek" type="button" aria-label="上一周">‹</button><strong id="adminWeekTitle">第 1 周</strong><button class="round-btn" id="adminNextWeek" type="button" aria-label="下一周">›</button><span class="admin-schedule-help">单击可预约方块切换开放 / 关闭</span></div>
+          <div class="admin-schedule-scroll"><div class="admin-schedule-grid" id="adminScheduleGrid"></div></div>
+          <p class="admin-message" id="scheduleMessage" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="admin-card bookings-admin-card">
+          <div class="admin-card-head"><div><h2>家长预约记录</h2><p>审核通过后，所选的全部时间片会一起变为“已预约”。拒绝或取消后会自动释放。</p></div><div class="admin-toolbar"><button class="admin-secondary" id="reloadBookings" type="button">刷新记录</button><button class="admin-primary small" id="exportBookings" type="button">导出 Excel</button></div></div>
+          <div class="booking-filters" id="bookingFilters">
+            <label><span>开始日期</span><input id="filterStart" type="date" /></label>
+            <label><span>结束日期</span><input id="filterEnd" type="date" /></label>
+            <label><span>年级</span><select id="filterGrade"><option value="">全部年级</option><option>小学</option><option>初一</option><option>初二</option><option>初三</option><option>高一</option><option>高二</option><option>高三</option><option>其他</option></select></label>
+            <label><span>科目</span><select id="filterSubject"><option value="">全部科目</option><option>数学</option><option>英语</option></select></label>
+            <label><span>状态</span><select id="filterStatus"><option value="">全部状态</option><option value="pending">审核中</option><option value="confirmed">已确认</option><option value="rejected">已拒绝</option><option value="cancelled">已取消</option></select></label>
+            <label><span>性别</span><select id="filterGender"><option value="">全部性别</option><option>男</option><option>女</option><option>其他 / 不便透露</option></select></label>
+            <label><span>区域</span><select id="filterDistrict"><option value="">全部区域</option><option>越秀区</option><option>海珠区</option><option>荔湾区</option><option>天河区</option><option>白云区</option><option>黄埔区</option><option>番禺区</option><option>花都区</option><option>南沙区</option><option>从化区</option><option>增城区</option></select></label>
+          </div>
+          <div class="table-scroll"><table class="booking-table"><thead><tr><th>状态 / 查询码</th><th>学生信息</th><th>预约时间</th><th>地点与价格</th><th>联系方式</th><th>备注</th><th>操作</th></tr></thead><tbody id="bookingRows"><tr><td colspan="7" class="empty-table">请先登录并等待数据加载。</td></tr></tbody></table></div>
+          <p class="admin-message" id="bookingMessage" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+    </section>
+  </main>
+  <div class="admin-toast" id="adminToast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

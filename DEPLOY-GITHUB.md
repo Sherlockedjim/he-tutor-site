@@ -23,6 +23,10 @@
 
 ## 数据库
 
-当前网站默认使用 LocalStorage 演示预约功能。若要让不同设备共享预约状态和家长信息，请按 `README.md` 接入 Supabase，并修改 `js/config.js`。
+当前网站预约功能需要接入 Supabase 才能实现多设备共享、人工审核、查询码和实时日历。请按 `README.md` 执行 `supabase-schema.sql`、创建唯一管理员账号，并修改 `js/config.js`。
+
+管理员后台地址为：
+
+`https://<你的用户名>.github.io/he-tutor-site/admin.html`
 
 **不要把 Supabase `service_role` key 放到 GitHub 或网页中。** 前端只允许使用 `anon public key`。

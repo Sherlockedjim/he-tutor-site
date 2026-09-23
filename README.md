@@ -12,11 +12,56 @@
 - 教育心理 / 记忆训练 / 考前状态方法卡片展开
 - 三段真实提分案例
 - 学历经历时间轴加入广州二中、中山大学、北京大学校徽
-- 21 天滚动预约日期 + 时段状态
-- 家长表单：姓名、年级、科目、当前成绩、目标成绩、联系方式、学习问题
+- 未来三周周视图预约日历：周一至周日列、每小时方块、多日期选择
+- 家长表单：姓名、性别、年级、科目、成绩、联系方式、地点、预期价格、学习问题
 - 微信二维码弹窗与移动端固定 CTA
-- LocalStorage 静态演示预约
-- Supabase 实时数据库接口已预留
+- 8 位数字查询码和状态查询
+- Supabase 实时预约、人工审核和管理员后台
+
+## 预约审核版使用方法
+
+当前版本新增了 `admin.html` 管理后台，预约日历改为未来三周的周视图：周一至周日为列，每小时为一个时间片。家长可以在多个日期分别选择连续 2–3 小时；提交后时间片进入“审核中”，老师确认后进入“已预约”，拒绝或取消后自动释放。
+
+### 第一次配置 Supabase
+
+1. 注册 Supabase 并新建 Project。这个项目可以先使用 Free 计划。
+2. 在 Supabase 的 SQL Editor 中执行本目录的 `supabase-schema.sql`。
+3. 打开 Authentication → Users，创建一个邮箱密码用户。
+4. 复制这个用户的 UUID，在 SQL Editor 中执行：
+
+```sql
+insert into public.admin_users(user_id, email)
+values ('Authentication 用户 UUID', '管理员邮箱');
+```
+
+5. 修改 `js/config.js`：
+
+```js
+window.HE_TUTOR_CONFIG = {
+  USE_SUPABASE: true,
+  SUPABASE_URL: "https://xxxx.supabase.co",
+  SUPABASE_ANON_KEY: "你的 anon public key"
+};
+```
+
+6. 部署后访问 `https://你的用户名.github.io/he-tutor-site/admin.html`，使用刚刚创建的管理员邮箱和密码登录。
+
+### 后台使用方法
+
+- 默认未来 21 天全部关闭，在后台点击时间方块即可开放或关闭。
+- 可以使用“开放未来21天”或“开放当前周”批量开放时间。
+- 家长提交后，相关小时会变成“审核中”，前台实时刷新且不能被再次选择。
+- 点击“确认”后显示为“已预约”；点击“拒绝”会填写可选原因并自动释放时间。
+- 已确认记录可以点击“取消预约”，取消后对应时间重新开放。
+- 预约记录支持按日期、年级、科目、状态、性别和区域筛选，并可导出 Excel。
+- 家长提交后获得 8 位数字查询码，可在预约页面查询状态。
+
+### 隐私与密钥
+
+- 前端只放 Supabase `anon public key`，绝不要放 `service_role key`。
+- 详细地址、联系方式、预期价格只允许管理员读取，不会通过查询码公开。
+- 家长查询码只返回学生、年级、科目、预约时间和审核状态。
+- `admin.html` 通过 Supabase Auth 登录，并由 `admin_users` 表限制为指定管理员账号。
 
 ## 本地打开
 
@@ -30,40 +75,21 @@ python -m http.server 8080
 
 浏览器访问 `http://localhost:8080`。
 
-## 接入 Supabase（让所有家长共享真实预约状态）
-
-1. 新建 Supabase Project。
-2. 在 SQL Editor 执行 `supabase-schema.sql`。
-3. 在 `booking_slots` 表录入你开放的日期与时间。
-4. 修改 `js/config.js`：
-
-```js
-window.HE_TUTOR_CONFIG = {
-  USE_SUPABASE: true,
-  SUPABASE_URL: "https://xxxx.supabase.co",
-  SUPABASE_ANON_KEY: "你的 anon public key"
-};
-```
-
-5. 刷新网页。网站会自动读取数据库中的时段，并通过 RPC 原子提交预约，避免两位家长同时抢到同一时段。
-
-### 安全说明
-
-- 前端只能放 `anon public key`，绝不要放 `service_role key`。
-- 家长提交信息储存在 `tutor_inquiries`；匿名访客没有读取权限。
-- 访客只可读取 `booking_slots` 的预约状态。
-- 如果以后需要“老师后台”，建议单独做登录保护的 Admin 页面，而不是把管理员密钥放在静态网页。
-
 ## 目录
 
 ```text
 he-tutor-site/
 ├── index.html
 ├── css/
-│   └── style.css
+│   ├── style.css
+│   ├── booking.css
+│   └── admin.css
 ├── js/
 │   ├── config.js
-│   └── main.js
+│   ├── main.js
+│   ├── booking-v2.js
+│   └── admin.js
+├── admin.html
 ├── assets/
 │   ├── teacher-he.webp
 │   ├── wechat-qr.webp

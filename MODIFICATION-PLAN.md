@@ -8,6 +8,14 @@
 - `.github/workflows/deploy-pages.yml`：修正原来的 `deplot-pages.yml` 文件名拼写，保证 GitHub Actions 能识别。
 - `js/main.js`：本次不需要改动；原有预约、Tab、动画和表单逻辑保持不变。
 
+## 预约审核版补充
+
+- `index.html`：预约区改为未来三周、周一至周日列、每小时方块的多日期选择界面，并加入查询码查询。
+- `css/booking.css`：预约周视图、状态方块、家长表单和隐私提示样式。
+- `js/booking-v2.js`：多日期连续 2–3 小时选择、实时刷新、提交预约、查询码查询。
+- `admin.html`、`css/admin.css`、`js/admin.js`：单管理员登录、开放/关闭时间、审核预约、筛选和 Excel 导出。
+- `supabase-schema.sql`：时间片锁定、待审核/已确认/拒绝/取消状态流转、管理员权限和实时更新配置。
+
 ## 上传到 GitHub
 
 1. 下载并解压本 ZIP。

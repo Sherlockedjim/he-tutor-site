@@ -97,7 +97,11 @@ img{max-width:100%;display:block}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition-duration:.001ms!important}.reveal{opacity:1!important;transform:none!important}}
 
-</style>
+  .journey-year.journey-logo{width:56px;height:56px;background:rgba(255,255,255,.96);box-shadow:0 8px 20px rgba(42,91,132,.12)}
+  .journey-logo img,.journey-logo .school-logo{width:40px;height:40px;object-fit:contain}
+  .journey-logo b{position:absolute;right:-8px;bottom:-4px;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:#eaf5fe;border:1px solid #cfe4f4;color:#396d9b;font-size:9px;line-height:1;box-shadow:0 3px 10px rgba(42,91,132,.12)}
+  @media(max-width:720px){.journey-line{left:46px}.journey-step{grid-template-columns:56px 1fr}}
+  </style>
 </head>
 <body>
   <div class="cursor-glow" aria-hidden="true"></div>
@@ -180,15 +184,15 @@ img{max-width:100%;display:block}
           <div class="journey-card reveal">
             <div class="journey-line" aria-hidden="true"></div>
             <article class="journey-step">
-              <span class="journey-year">01</span>
+              <span class="journey-year journey-logo"><img class="school-logo" src="./assets/school-logos/guangzhou-no2.png" alt="广州市第二中学校徽" loading="eager" decoding="async"><b>01</b></span>
               <div><small>FOUNDATION</small><h3>广州二中</h3><p>初高中均就读广州二中。高考 650+，省排名 600 名以内；广一模全市前十。</p></div>
             </article>
             <article class="journey-step">
-              <span class="journey-year">02</span>
+              <span class="journey-year journey-logo"><img class="school-logo" src="./assets/school-logos/sun-yat-sen.svg" alt="中山大学校徽" loading="eager" decoding="async"><b>02</b></span>
               <div><small>UNDERGRADUATE</small><h3>中山大学</h3><p>数学金融双学位。获国家奖学金、中山大学一等奖学金，并在数学竞赛与数学建模中获省级一等奖。</p></div>
             </article>
             <article class="journey-step">
-              <span class="journey-year">03</span>
+              <span class="journey-year journey-logo"><img class="school-logo" src="./assets/school-logos/peking-university.svg" alt="北京大学校徽" loading="eager" decoding="async"><b>03</b></span>
               <div><small>MASTER</small><h3>北京大学</h3><p>继续深造。将理性思维、结构化分析和长期学习方法融入日常教学。</p></div>
             </article>
           </div>

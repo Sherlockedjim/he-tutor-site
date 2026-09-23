@@ -17,6 +17,6 @@
 
 /* School emblems in the education timeline */
 .journey-year.journey-logo{width:56px;height:56px;background:rgba(255,255,255,.96);box-shadow:0 8px 20px rgba(42,91,132,.12)}
-.journey-logo img{width:40px;height:40px;object-fit:contain}
+.journey-logo img,.journey-logo .school-logo{width:40px;height:40px;object-fit:contain}
 .journey-logo b{position:absolute;right:-8px;bottom:-4px;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:#eaf5fe;border:1px solid #cfe4f4;color:#396d9b;font-size:9px;line-height:1;box-shadow:0 3px 10px rgba(42,91,132,.12)}
 @media(max-width:720px){.journey-line{left:46px}.journey-step{grid-template-columns:56px 1fr}}

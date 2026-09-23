@@ -1,0 +1,43 @@
+.booking-v2{background:linear-gradient(180deg,#eef7fe,#f9fcff)}
+.booking-v2-layout{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(360px,.78fr);gap:24px;align-items:start}
+.schedule-panel,.booking-form-v2,.lookup-card{border-radius:28px;background:#fff;border:1px solid rgba(36,89,133,.1);box-shadow:var(--shadow-soft)}
+.schedule-panel{padding:28px;min-width:0}
+.schedule-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.schedule-head small,.form-head-v2 small{font-size:9px;letter-spacing:.16em;color:#7693ad}
+.schedule-head h3,.form-head-v2 h3,.lookup-card h3{font-family:var(--serif);font-size:28px;margin:3px 0 0}
+.schedule-head p{font-size:12px;color:#8295a8;margin:6px 0 0}
+.week-controls{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.week-controls strong{font-size:13px;color:#315d84;min-width:54px;text-align:center}
+.week-btn{width:32px;height:32px;border:1px solid var(--line);background:#f7fbff;border-radius:50%;font-size:23px;line-height:1;cursor:pointer;color:#315d84;transition:.25s}
+.week-btn:hover:not(:disabled){background:#153f69;color:#fff;border-color:#153f69}
+.week-btn:disabled{opacity:.35;cursor:not-allowed}
+.schedule-legend{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 14px;color:#71879a;font-size:10px}
+.schedule-legend span{display:flex;align-items:center;gap:5px}
+.schedule-dot{width:9px;height:9px;border-radius:3px;display:inline-block;border:1px solid #cbdce9;background:#f4f8fb}
+.schedule-dot.open{background:#f7fbff;border-color:#9fc3df}.schedule-dot.pending{background:#d7e1ea;border-color:#c3d0da}.schedule-dot.occupied{background:#b8c4ce;border-color:#aab7c2}.schedule-dot.selected{background:#123f6c;border-color:#123f6c}
+.schedule-scroll{overflow:auto;border:1px solid #e1ebf3;border-radius:18px;background:#fbfdff}
+.schedule-grid{display:grid;grid-template-columns:74px repeat(7,minmax(104px,1fr));min-width:820px}
+.schedule-grid>*{border-right:1px solid #e5edf3;border-bottom:1px solid #e5edf3}
+.schedule-grid>*:nth-child(8n){border-right:0}
+.schedule-corner{min-height:60px;background:#f4f9fd}
+.schedule-day-head{min-height:60px;padding:9px 6px;text-align:center;background:#f4f9fd;color:#315d84;position:sticky;top:0;z-index:2}
+.schedule-day-head strong{display:block;font-size:13px}.schedule-day-head small{display:block;color:#8096a8;font-size:10px;margin-top:2px}.schedule-day-head.today{background:#e7f3fc}.schedule-day-head.past{color:#a0afbb}
+.schedule-time{display:grid;place-items:center;min-height:51px;background:#fbfdff;color:#8b9cac;font-size:10px;font-variant-numeric:tabular-nums}
+.schedule-cell{min-height:51px;padding:5px;border:0;border-radius:0;background:#fff;cursor:pointer;position:relative;transition:background .16s,box-shadow .16s,color .16s}
+.schedule-cell:after{content:"";position:absolute;inset:7px;border:1px solid #cbdfea;border-radius:9px;transition:.16s}
+.schedule-cell.available:hover{background:#edf6fd}.schedule-cell.available:hover:after{border-color:#72a8d0;box-shadow:0 0 0 2px rgba(95,157,206,.1)}
+.schedule-cell.selected{background:#d4e9f8}.schedule-cell.selected:after{background:#123f6c;border-color:#123f6c;box-shadow:0 5px 12px rgba(18,63,108,.2)}
+.schedule-cell.selected .cell-label{color:#fff}
+.schedule-cell.pending,.schedule-cell.booked,.schedule-cell.blocked,.schedule-cell.closed,.schedule-cell.past{background:#f0f3f5;cursor:not-allowed}
+.schedule-cell.pending:after,.schedule-cell.booked:after,.schedule-cell.blocked:after,.schedule-cell.closed:after,.schedule-cell.past:after{background:#d8e0e6;border-color:#d0d9df}
+.cell-label{position:relative;z-index:1;display:block;text-align:center;padding-top:12px;color:#7191aa;font-size:9px;white-space:nowrap;pointer-events:none}
+.schedule-cell.pending .cell-label,.schedule-cell.booked .cell-label,.schedule-cell.blocked .cell-label,.schedule-cell.closed .cell-label,.schedule-cell.past .cell-label{color:#82919d}
+.schedule-hint{margin:14px 0 0;color:#8094a4;font-size:11px;line-height:1.7}
+.selection-summary{margin-top:15px;padding:13px 15px;border-radius:14px;background:#edf6fd;color:#426b8e;font-size:12px;min-height:47px}
+.selection-summary strong{color:#123f6c}.selection-summary p{margin:4px 0 0;color:#70889d}.selection-summary .selection-warning{color:#ae5d42}
+.reset-selection{margin-top:12px;border:1px solid #cbdfea;background:#fff;color:#426b8e;border-radius:999px;padding:9px 15px;cursor:pointer;font-size:12px}.reset-selection:hover{background:#edf6fd}
+.booking-form-v2{padding:30px}.form-head-v2 p{font-size:12px;color:#8295a8;margin:6px 0 0}.selected-sessions{margin:22px 0;padding:13px 15px;border-radius:14px;background:#edf6fd;color:#426b8e;font-size:12px;min-height:45px}.selected-sessions strong{color:#154c7c}.selected-sessions p{margin:3px 0 0;color:#70889d}
+.form-grid-v2{display:grid;grid-template-columns:1fr 1fr;gap:15px}.booking-form-v2 label{display:flex;flex-direction:column;gap:7px}.booking-form-v2 label>span{font-size:11px;color:#54718c;font-weight:650}.booking-form-v2 input,.booking-form-v2 select,.booking-form-v2 textarea{width:100%;border:1px solid #dbe7f0;background:#fbfdff;border-radius:13px;padding:12px 13px;color:#183e62;outline:0;transition:.25s}.booking-form-v2 input:focus,.booking-form-v2 select:focus,.booking-form-v2 textarea:focus{border-color:#6fa7d2;box-shadow:0 0 0 4px rgba(95,157,206,.11);background:#fff}.booking-form-v2 textarea{resize:vertical}.location-fields{margin-top:15px}.offline-fields{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}.address-field{grid-column:1/-1}.full-field-v2{margin-top:15px}.privacy-note{margin:14px 0 0;color:#8295a8;font-size:11px;line-height:1.7}.privacy-check-v2{margin-top:14px!important;display:flex!important;flex-direction:row!important;align-items:flex-start!important;gap:8px!important}.privacy-check-v2 input{width:auto;margin-top:5px}.privacy-check-v2 span{font-weight:400!important;color:#8092a3!important}.submit-btn-v2{width:100%;margin-top:18px}.submit-spinner{display:none;width:16px;height:16px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}.submit-btn-v2.loading .submit-spinner{display:block}.submit-btn-v2.loading .submit-label{opacity:.8}.form-status-v2{min-height:22px;font-size:12px;margin:9px 0 0;text-align:center}.form-status-v2.error{color:#ae4242}.form-status-v2.success{color:#2a765e}
+.lookup-card{margin-top:24px;padding:27px 30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.8fr);gap:24px;align-items:end}.lookup-card h3{font-size:24px}.lookup-card p{font-size:12px;color:#8295a8;margin:6px 0 0}.lookup-form{display:flex;align-items:end;gap:10px}.lookup-form label{display:flex;flex-direction:column;gap:7px;flex:1}.lookup-form label span{font-size:11px;color:#54718c;font-weight:650}.lookup-form input{width:100%;border:1px solid #dbe7f0;background:#fbfdff;border-radius:13px;padding:12px 13px;color:#183e62;outline:0;letter-spacing:.16em}.lookup-form input:focus{border-color:#6fa7d2;box-shadow:0 0 0 4px rgba(95,157,206,.11);background:#fff}.lookup-result{grid-column:1/-1;min-height:0;color:#426b8e;font-size:12px}.lookup-result:empty{display:none}.lookup-result.success{padding:14px 16px;border-radius:14px;background:#edf8f3;color:#2a765e}.lookup-result.error{padding:14px 16px;border-radius:14px;background:#fff3f0;color:#ae4242}.lookup-result dl{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0}.lookup-result dt{font-size:10px;color:#8095a6}.lookup-result dd{margin:2px 0 0;font-weight:700;color:#183f65}
+@media(max-width:980px){.booking-v2-layout{grid-template-columns:1fr}.schedule-panel{position:relative}.lookup-card{grid-template-columns:1fr}.lookup-form{max-width:520px}}
+@media(max-width:720px){.schedule-panel,.booking-form-v2{padding:20px;border-radius:22px}.schedule-head{align-items:flex-start;flex-direction:column}.week-controls{align-self:stretch;justify-content:space-between}.schedule-grid{grid-template-columns:58px repeat(7,minmax(92px,1fr))}.schedule-day-head{min-height:56px}.schedule-cell,.schedule-time{min-height:48px}.schedule-legend{gap:8px}.form-grid-v2,.offline-fields{grid-template-columns:1fr}.address-field{grid-column:auto}.lookup-card{padding:23px 20px;border-radius:22px}.lookup-form{display:grid;grid-template-columns:1fr}.lookup-form .btn{width:100%}.lookup-result dl{grid-template-columns:1fr 1fr}}
